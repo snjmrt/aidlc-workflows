@@ -123,7 +123,7 @@ These are our core principles to guide our decision making.
 
 - **Agnostic**. The methodology works with any IDE, agent, or model. We don't tie ourselves to specific tools or vendors.
 
-- **Human in the Loop**. Critical decisions require explicit user confirmation. The agent proposes, the human approves.
+- **Human in the loop**. Critical decisions require explicit user confirmation. The agent proposes, the human approves.
 
 ## Security
 
