@@ -12,8 +12,8 @@ Before contributing, familiarize yourself with our [tenets](README.md#tenets).
 
 AI-DLC rules live in `aidlc-rules/aws-aidlc-rule-details/`. When contributing:
 
-- **One source of truth**: Don't duplicate content. If guidance applies to multiple stages, put it in `common/` and reference it.
-- **Be explicit**: Rules should be clear enough that different models produce similar outcomes.
+- **Be reproducible**: Changes should be consistently reproducible either via test case or a series of step
+- **Single source of truth**: Don't duplicate content. If guidance applies to multiple stages, put it in `common/` and reference it.
 - **Keep it agnostic**: The core methodology shouldn't assume specific IDEs, agents, or models. Tool-specific files are generated from the source.
 
 ### Rule Structure
@@ -55,6 +55,8 @@ To submit:
 ## Code of Conduct
 
 This project has adopted the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct).
+
+For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq) or contact opensource-codeofconduct@amazon.com with any additional questions or comments.
 
 ## Security Issue Notifications
 
