@@ -1,52 +1,58 @@
-# Content Validation Rules
+# コンテンツ検証ルール
 
-## MANDATORY: Content Validation Before File Creation
+## 必須: ファイル作成前のコンテンツ検証
 
-**CRITICAL**: All generated content MUST be validated before writing to files to prevent parsing errors.
+**重要**: 生成コンテンツはパースエラーを防ぐため、ファイルに書き込む前に必ず検証すること。
 
-## ASCII Diagram Standards
+## ASCII 図の基準
 
-**CRITICAL**: Before creating ANY file with ASCII diagrams:
+**重要**: ASCII 図を含むファイルを作成する前に:
 
-1. **LOAD** `common/ascii-diagram-standards.md`
-2. **VALIDATE** each diagram:
-   - Count characters per line (all lines MUST be same width)
-   - Use ONLY: `+` `-` `|` `^` `v` `<` `>` and spaces
-   - NO Unicode box-drawing characters
-   - Spaces only (NO tabs)
-3. **TEST** alignment by verifying box corners align vertically
+1. **読み込み**: `common/ascii-diagram-standards.md`
+2. **検証**: 各図を確認
+   - 行ごとの文字数を数える（全行同一幅であること）
+   - 使用文字は `+` `-` `|` `^` `v` `<` `>` と空白のみ
+   - Unicode の罫線文字は禁止
+   - 空白はスペースのみ（タブ禁止）
+3. **テスト**: 罫線の角が縦に揃うことを確認
 
-**See `common/ascii-diagram-standards.md` for patterns and validation checklist.**
+**パターンと検証チェックリストは `common/ascii-diagram-standards.md` を参照。**
 
-## Mermaid Diagram Validation
+## Mermaid 図の検証
 
-### Required Validation Steps
-1. **Syntax Check**: Validate Mermaid syntax before file creation
-2. **Character Escaping**: Ensure special characters are properly escaped
-3. **Fallback Content**: Provide text alternative if Mermaid fails validation
+### 必須の検証手順
 
-### Mermaid Validation Rules
+1. **構文チェック**: ファイル作成前に Mermaid 構文を検証
+2. **文字エスケープ**: 特殊文字が正しくエスケープされていることを確認
+3. **フォールバック**: Mermaid が失敗した場合のテキスト代替を用意
+
+### Mermaid 検証ルール
+
 ```markdown
 ## BEFORE creating any file with Mermaid diagrams:
 
 1. Check for invalid characters in node IDs (use alphanumeric + underscore only)
-2. Escape special characters in labels: " → \" and ' → \'
+2. Escape special characters in labels: " → \" and ' → \
 3. Validate flowchart syntax: node connections must be valid
 4. Test diagram parsing with simple validation
 
 ## FALLBACK: If Mermaid validation fails, use text-based workflow representation
 ```
 
-### Implementation Pattern
-```markdown
+### 実装パターン
+
+````markdown
 ## Workflow Visualization
 
 ### Mermaid Diagram (if syntax valid)
+
 ```mermaid
 [validated diagram content]
 ```
+````
 
 ### Text Alternative (always include)
+
 ```
 Phase 1: INCEPTION
 - Stage 1: Workspace Detection (COMPLETED)
@@ -54,25 +60,28 @@ Phase 1: INCEPTION
 [continue with text representation]
 ```
 
-## General Content Validation
+```
 
-### Pre-Creation Validation Checklist
-- [ ] Validate embedded code blocks (Mermaid, JSON, YAML)
-- [ ] Check special character escaping
-- [ ] Verify markdown syntax correctness
-- [ ] Test content parsing compatibility
-- [ ] Include fallback content for complex elements
+## 一般的なコンテンツ検証
 
-### Error Prevention Rules
-1. **Always validate before using tools/commands to write files**: Never write unvalidated content
-2. **Escape special characters**: Particularly in diagrams and code blocks
-3. **Provide alternatives**: Include text versions of visual content
-4. **Test syntax**: Validate complex content structures
+### 作成前検証チェックリスト
+- [ ] 埋め込みコードブロック（Mermaid、JSON、YAML）を検証
+- [ ] 特殊文字のエスケープを確認
+- [ ] Markdown 構文の正しさを確認
+- [ ] コンテンツのパース互換性をテスト
+- [ ] 複雑な要素にテキスト代替を含める
 
-## Validation Failure Handling
+### エラー防止ルール
+1. **ツール/コマンドでファイルを書き込む前に必ず検証**: 未検証の内容は書き込まない
+2. **特殊文字をエスケープ**: 特に図やコードブロック内
+3. **代替を用意**: 視覚的コンテンツにはテキスト版を含める
+4. **構文をテスト**: 複雑な構造は必ず検証
 
-### When Validation Fails
-1. **Log the error**: Record what failed validation
-2. **Use fallback content**: Switch to text-based alternative
-3. **Continue workflow**: Don't block on content validation failures
-4. **Inform user**: Mention simplified content was used due to parsing constraints
+## 検証失敗時の対応
+
+### 検証に失敗した場合
+1. **エラーを記録**: 何が失敗したかを記録
+2. **フォールバックを使用**: テキストベースの代替に切り替え
+3. **ワークフロー継続**: 検証失敗で停止しない
+4. **ユーザーに通知**: パース制約により簡略化したことを伝える
+```

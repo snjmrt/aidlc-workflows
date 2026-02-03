@@ -1,140 +1,140 @@
-# Code Generation - Detailed Steps
+# Code Generation - 詳細手順
 
-## Overview
-This stage generates code for each unit of work through two integrated parts:
-- **Part 1 - Planning**: Create detailed code generation plan with explicit steps
-- **Part 2 - Generation**: Execute approved plan to generate code, tests, and artifacts
+## 概要
+このステージは 2 部構成で各ユニットのコードを生成する:
+- **パート 1 - 計画**: 明示的手順を含む詳細なコード生成計画を作成
+- **パート 2 - 生成**: 承認済み計画を実行してコード、テスト、成果物を生成
 
-**Note**: For brownfield projects, "generate" means modify existing files when appropriate, not create duplicates.
+**注記**: ブラウンフィールドでは "生成" は既存ファイルの適切な修正を意味し、重複作成ではない。
 
-## Prerequisites
-- Unit Design Generation must be complete for the unit
-- NFR Implementation (if executed) must be complete for the unit
-- All unit design artifacts must be available
-- Unit is ready for code generation
+## 前提条件
+- ユニットの Unit Design Generation が完了していること
+- NFR 実装（実施した場合）が完了していること
+- すべてのユニット設計成果物が利用可能
+- ユニットがコード生成の準備完了
 
 ---
 
 # PART 1: PLANNING
 
-## Step 1: Analyze Unit Context
-- [ ] Read unit design artifacts from Unit Design Generation
-- [ ] Read unit story map to understand assigned stories
-- [ ] Identify unit dependencies and interfaces
-- [ ] Validate unit is ready for code generation
+## ステップ 1: ユニットコンテキストの分析
+- [ ] Unit Design Generation の成果物を読む
+- [ ] ユニットストーリーマップを読み、割り当てストーリーを理解
+- [ ] ユニットの依存関係とインターフェイスを特定
+- [ ] コード生成準備が整っているか検証
 
-## Step 2: Create Detailed Unit Code Generation Plan
-- [ ] Read workspace root and project type from `aidlc-docs/aidlc-state.md`
-- [ ] Determine code location (see Critical Rules for structure patterns)
-- [ ] **Brownfield only**: Review reverse engineering code-structure.md for existing files to modify
-- [ ] Document exact paths (never aidlc-docs/)
-- [ ] Create explicit steps for unit generation:
-  - Project Structure Setup (greenfield only)
-  - Business Logic Generation
-  - Business Logic Unit Testing
-  - Business Logic Summary
-  - API Layer Generation
-  - API Layer Unit Testing
-  - API Layer Summary
-  - Repository Layer Generation
-  - Repository Layer Unit Testing
-  - Repository Layer Summary
-  - Database Migration Scripts (if data models exist)
-  - Documentation Generation (API docs, README updates)
-  - Deployment Artifacts Generation
-- [ ] Number each step sequentially
-- [ ] Include story mapping references
-- [ ] Add checkboxes [ ] for each step
+## ステップ 2: 詳細なユニットコード生成計画の作成
+- [ ] `aidlc-docs/aidlc-state.md` からワークスペースルートとプロジェクト種別を読む
+- [ ] コード配置場所を決定（構造パターンは Critical Rules 参照）
+- [ ] **ブラウンフィールドのみ**: 既存ファイルを修正するため reverse-engineering の code-structure.md を確認
+- [ ] 正確なパスを記載（aidlc-docs/ には置かない）
+- [ ] ユニット生成の明示的ステップを作成:
+  - プロジェクト構成のセットアップ（グリーンフィールドのみ）
+  - ビジネスロジック生成
+  - ビジネスロジックのユニットテスト
+  - ビジネスロジックのサマリー
+  - API レイヤー生成
+  - API レイヤーのユニットテスト
+  - API レイヤーのサマリー
+  - リポジトリレイヤー生成
+  - リポジトリレイヤーのユニットテスト
+  - リポジトリレイヤーのサマリー
+  - DB マイグレーションスクリプト（データモデルがある場合）
+  - ドキュメント生成（API docs, README 更新）
+  - デプロイ成果物生成
+- [ ] 各ステップに連番を付ける
+- [ ] ストーリーマッピング参照を含める
+- [ ] 各ステップにチェックボックス [ ] を付ける
 
-## Step 3: Include Unit Generation Context
-- [ ] For this unit, include:
-  - Stories implemented by this unit
-  - Dependencies on other units/services
-  - Expected interfaces and contracts
-  - Database entities owned by this unit
-  - Service boundaries and responsibilities
+## ステップ 3: ユニット生成コンテキストの記載
+- [ ] 当該ユニットに含める事項:
+  - このユニットが実装するストーリー
+  - 他ユニット/サービスへの依存
+  - 期待されるインターフェイス/契約
+  - このユニットが所有する DB エンティティ
+  - サービス境界と責務
 
-## Step 4: Create Unit Plan Document
-- [ ] Save complete plan as `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md`
-- [ ] Include step numbering (Step 1, Step 2, etc.)
-- [ ] Include unit context and dependencies
-- [ ] Include story traceability
-- [ ] Ensure plan is executable step-by-step
-- [ ] Emphasize that this plan is the single source of truth for Code Generation
+## ステップ 4: ユニット計画ドキュメントの作成
+- [ ] `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md` に保存
+- [ ] ステップ番号（Step 1, Step 2, ...）を含める
+- [ ] ユニットコンテキストと依存関係を含める
+- [ ] ストーリートレーサビリティを含める
+- [ ] 計画が段階的に実行可能であることを確認
+- [ ] この計画が Code Generation の単一の真実であることを強調
 
-## Step 5: Summarize Unit Plan
-- [ ] Provide summary of the unit code generation plan to the user
-- [ ] Highlight unit generation approach
-- [ ] Explain step sequence and story coverage
-- [ ] Note total number of steps and estimated scope
+## ステップ 5: ユニット計画の要約
+- [ ] ユニットコード生成計画の要約をユーザーに提示
+- [ ] 生成アプローチを強調
+- [ ] ステップ順序とストーリー網羅を説明
+- [ ] ステップ数と推定スコープを示す
 
-## Step 6: Log Approval Prompt
-- [ ] Before asking for approval, log the prompt with timestamp in `aidlc-docs/audit.md`
-- [ ] Include reference to the complete unit code generation plan
-- [ ] Use ISO 8601 timestamp format
+## ステップ 6: 承認プロンプトの記録
+- [ ] 承認を求める前に、プロンプトを `aidlc-docs/audit.md` にタイムスタンプ付きで記録
+- [ ] 完全なユニットコード生成計画への参照を含める
+- [ ] ISO 8601 形式を使用
 
-## Step 7: Wait for Explicit Approval
-- [ ] Do not proceed until the user explicitly approves the unit code generation plan
-- [ ] Approval must cover the entire plan and generation sequence
-- [ ] If user requests changes, update the plan and repeat approval process
+## ステップ 7: 明示的承認待ち
+- [ ] ユーザーがユニットコード生成計画を明示的に承認するまで進めない
+- [ ] 承認は計画全体と生成順序を含む必要がある
+- [ ] 変更依頼があれば計画を更新し、承認プロセスを繰り返す
 
-## Step 8: Record Approval Response
-- [ ] Log the user's approval response with timestamp in `aidlc-docs/audit.md`
-- [ ] Include the exact user response text
-- [ ] Mark the approval status clearly
+## ステップ 8: 承認応答の記録
+- [ ] ユーザーの承認回答を `aidlc-docs/audit.md` にタイムスタンプ付きで記録
+- [ ] ユーザーの回答を正確に記録
+- [ ] 承認状態を明確に記載
 
-## Step 9: Update Progress
-- [ ] Mark Code Planning complete in `aidlc-state.md`
-- [ ] Update the "Current Status" section
-- [ ] Prepare for transition to Code Generation
+## ステップ 9: 進捗更新
+- [ ] aidlc-state.md で Code Planning を完了にする
+- [ ] "Current Status" セクションを更新
+- [ ] Code Generation への移行準備
 
 ---
 
 # PART 2: GENERATION
 
-## Step 10: Load Unit Code Generation Plan
-- [ ] Read the complete plan from `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md`
-- [ ] Identify the next uncompleted step (first [ ] checkbox)
-- [ ] Load the context for that step (unit, dependencies, stories)
+## ステップ 10: ユニットコード生成計画の読み込み
+- [ ] `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md` から完全な計画を読む
+- [ ] 次の未完了ステップ（最初の [ ]）を特定
+- [ ] 該当ステップのコンテキスト（ユニット、依存関係、ストーリー）を読み込む
 
-## Step 11: Execute Current Step
-- [ ] Verify target directory from plan (never aidlc-docs/)
-- [ ] **Brownfield only**: Check if target file exists
-- [ ] Generate exactly what the current step describes:
-  - **If file exists**: Modify it in-place (never create `ClassName_modified.java`, `ClassName_new.java`, etc.)
-  - **If file doesn't exist**: Create new file
-- [ ] Write to correct locations:
-  - **Application Code**: Workspace root per project structure
-  - **Documentation**: `aidlc-docs/construction/{unit-name}/code/` (markdown only)
-  - **Build/Config Files**: Workspace root
-- [ ] Follow unit story requirements
-- [ ] Respect dependencies and interfaces
+## ステップ 11: 現在ステップの実行
+- [ ] 計画にあるターゲットディレクトリを確認（aidlc-docs/ には書かない）
+- [ ] **ブラウンフィールドのみ**: 対象ファイルの存在を確認
+- [ ] 現在ステップの内容を正確に生成:
+  - **ファイルが存在する場合**: そのまま上書き修正（`ClassName_modified.java` などの複製は禁止）
+  - **存在しない場合**: 新規作成
+- [ ] 正しい場所に書き込む:
+  - **アプリケーションコード**: プロジェクト構造に従いワークスペースルート
+  - **ドキュメント**: `aidlc-docs/construction/{unit-name}/code/`（Markdown のみ）
+  - **ビルド/設定ファイル**: ワークスペースルート
+- [ ] ユニットストーリー要件に従う
+- [ ] 依存関係とインターフェイスを尊重
 
-## Step 12: Update Progress
-- [ ] Mark the completed step as [x] in the unit code generation plan
-- [ ] Mark associated unit stories as [x] when their generation is finished
-- [ ] Update `aidlc-docs/aidlc-state.md` current status
-- [ ] **Brownfield only**: Verify no duplicate files created (e.g., no `ClassName_modified.java` alongside `ClassName.java`)
-- [ ] Save all generated artifacts
+## ステップ 12: 進捗更新
+- [ ] 完了ステップをユニットコード生成計画で [x] にする
+- [ ] 関連ストーリーの生成完了時に [x] を付ける
+- [ ] `aidlc-docs/aidlc-state.md` の現在状況を更新
+- [ ] **ブラウンフィールドのみ**: 重複ファイルがないことを確認（例: `ClassName.java` と `ClassName_modified.java` が並存しない）
+- [ ] 生成成果物を保存
 
-## Step 13: Continue or Complete Generation
-- [ ] If more steps remain, return to Step 10
-- [ ] If all steps complete, proceed to present completion message
+## ステップ 13: 継続または完了
+- [ ] 残りがあればステップ 10 に戻る
+- [ ] すべて完了なら完了メッセージへ進む
 
-## Step 14: Present Completion Message
-- Present completion message in this structure:
-     1. **Completion Announcement** (mandatory): Always start with this:
+## ステップ 14: 完了メッセージの提示
+- 次の構造で完了メッセージを提示:
+     1. **完了告知**（必須）: 必ずこれで開始
 
 ```markdown
 # 💻 Code Generation Complete - [unit-name]
 ```
 
-     2. **AI Summary** (optional): Provide structured bullet-point summary
-        - **Brownfield**: Distinguish modified vs created files (e.g., "• Modified: `src/services/user-service.ts`", "• Created: `src/services/auth-service.ts`")
-        - **Greenfield**: List created files with paths (e.g., "• Created: `src/services/user-service.ts`")
-        - List tests, documentation, deployment artifacts with paths
-        - Keep factual, no workflow instructions
-     3. **Formatted Workflow Message** (mandatory): Always end with this exact format:
+     2. **AI 要約**（任意）: 構造化箇条書き要約
+        - **ブラウンフィールド**: 修正と新規作成を区別（例: "• Modified: `src/services/user-service.ts`"、"• Created: `src/services/auth-service.ts`")
+        - **グリーンフィールド**: 作成ファイルとパスを列挙
+        - テスト、ドキュメント、デプロイ成果物のパスを列挙
+        - 事実ベースで、ワークフロー指示は含めない
+     3. **フォーマット済みワークフローメッセージ**（必須）: 必ず以下の形式で終了
 
 ```markdown
 > **📋 <u>**REVIEW REQUIRED:**</u>**  
@@ -154,54 +154,54 @@ This stage generates code for each unit of work through two integrated parts:
 ---
 ```
 
-## Step 15: Wait for Explicit Approval
-- Do not proceed until the user explicitly approves the generated code
-- Approval must be clear and unambiguous
-- If user requests changes, update the code and repeat the approval process
+## ステップ 15: 明示的承認待ち
+- ユーザーが明示的に承認するまで進めない
+- 承認は明確で曖昧でないこと
+- 変更依頼があればコードを更新し、承認プロセスを繰り返す
 
-## Step 16: Record Approval and Update Progress
-- Log approval in audit.md with timestamp
-- Record the user's approval response with timestamp
-- Mark Code Generation stage as complete for this unit in aidlc-state.md
+## ステップ 16: 承認記録と進捗更新
+- audit.md に承認をタイムスタンプ付きで記録
+- ユーザーの承認回答をタイムスタンプ付きで記録
+- aidlc-state.md で当該ユニットの Code Generation を完了にする
 
 ---
 
-## Critical Rules
+## 重要ルール
 
-### Code Location Rules
-- **Application code**: Workspace root only (NEVER aidlc-docs/)
-- **Documentation**: aidlc-docs/ only (markdown summaries)
-- **Read workspace root** from aidlc-state.md before generating code
+### コード配置ルール
+- **アプリケーションコード**: ワークスペースルートのみ（aidlc-docs/ は禁止）
+- **ドキュメント**: aidlc-docs/ のみ（Markdown サマリー）
+- **ワークスペースルート** はコード生成前に aidlc-state.md から読む
 
-**Structure patterns by project type**:
-- **Brownfield**: Use existing structure (e.g., `src/main/java/`, `lib/`, `pkg/`)
-- **Greenfield single unit**: `src/`, `tests/`, `config/` in workspace root
-- **Greenfield multi-unit (microservices)**: `{unit-name}/src/`, `{unit-name}/tests/`
-- **Greenfield multi-unit (monolith)**: `src/{unit-name}/`, `tests/{unit-name}/`
+**プロジェクト種別の構造パターン**:
+- **ブラウンフィールド**: 既存構造を使用（例: `src/main/java/`, `lib/`, `pkg/`）
+- **グリーンフィールド単一ユニット**: ワークスペースルートに `src/`, `tests/`, `config/`
+- **グリーンフィールド複数ユニット（マイクロサービス）**: `{unit-name}/src/`, `{unit-name}/tests/`
+- **グリーンフィールド複数ユニット（モノリス）**: `src/{unit-name}/`, `tests/{unit-name}/`
 
-### Brownfield File Modification Rules
-- Check if file exists before generating
-- If exists: Modify in-place (never create copies like `ClassName_modified.java`)
-- If doesn't exist: Create new file
-- Verify no duplicate files after generation (Step 12)
+### ブラウンフィールドのファイル修正ルール
+- 生成前にファイルの存在を確認
+- 存在する場合はインプレース修正（`ClassName_modified.java` などの複製は禁止）
+- 存在しない場合は新規作成
+- 生成後に重複ファイルがないことを確認（ステップ 12）
 
-### Planning Phase Rules
-- Create explicit, numbered steps for all generation activities
-- Include story traceability in the plan
-- Document unit context and dependencies
-- Get explicit user approval before generation
+### Planning フェーズのルール
+- 生成作業の明示的で連番のステップを作成
+- ストーリートレーサビリティを計画に含める
+- ユニットコンテキストと依存関係を文書化
+- 生成前にユーザーの明示的承認を得る
 
-### Generation Phase Rules
-- **NO HARDCODED LOGIC**: Only execute what's written in the unit plan
-- **FOLLOW PLAN EXACTLY**: Do not deviate from the step sequence
-- **UPDATE CHECKBOXES**: Mark [x] immediately after completing each step
-- **STORY TRACEABILITY**: Mark unit stories [x] when functionality is implemented
-- **RESPECT DEPENDENCIES**: Only implement when unit dependencies are satisfied
+### Generation フェーズのルール
+- **ハードコード禁止**: ユニット計画に書かれた内容のみ実行
+- **計画に厳密に従う**: ステップ順序から逸脱しない
+- **チェックボックス更新**: 完了直後に [x] を付ける
+- **ストーリートレーサビリティ**: 実装完了時にストーリーを [x] にする
+- **依存関係の尊重**: 依存が満たされている場合のみ実装
 
-## Completion Criteria
-- Complete unit code generation plan created and approved
-- All steps in unit code generation plan marked [x]
-- All unit stories implemented according to plan
-- All code and tests generated (tests will be executed in Build & Test phase)
-- Deployment artifacts generated
-- Complete unit ready for build and verification
+## 完了条件
+- 完全なユニットコード生成計画が作成・承認済み
+- 計画の全ステップが [x]
+- すべてのユニットストーリーが計画通りに実装済み
+- すべてのコードとテストが生成済み（テスト実行は Build & Test フェーズ）
+- デプロイ成果物が生成済み
+- ユニットがビルドと検証の準備完了

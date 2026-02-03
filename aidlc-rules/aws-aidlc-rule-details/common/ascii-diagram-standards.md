@@ -1,21 +1,24 @@
-# ASCII Diagram Standards
+# ASCII 図の基準
 
-## MANDATORY: Use Basic ASCII Only
+## 必須: 基本 ASCII のみ使用
 
-**CRITICAL**: ALWAYS use basic ASCII characters for diagrams (maximum compatibility).
+**重要**: 互換性のため、図は必ず基本 ASCII 文字のみを使用する。
 
-### ✅ ALLOWED: `+` `-` `|` `^` `v` `<` `>` and alphanumeric text
+### ✅ 許可: `+` `-` `|` `^` `v` `<` `>` と英数字テキスト
 
-### ❌ FORBIDDEN: Unicode box-drawing characters
-- NO: `┌` `─` `│` `└` `┐` `┘` `├` `┤` `┬` `┴` `┼` `▼` `▲` `►` `◄`
-- Reason: Inconsistent rendering across fonts/platforms
+### ❌ 禁止: Unicode の罫線文字
 
-## Standard ASCII Diagram Patterns
+- 禁止: `┌` `─` `│` `└` `┐` `┘` `├` `┤` `┬` `┴` `┼` `▼` `▲` `►` `◄`
+- 理由: フォント/プラットフォーム間で表示が不安定
 
-### CRITICAL: Character Width Rule
-**Every line in a box MUST have EXACTLY the same character count (including spaces)**
+## 標準 ASCII 図パターン
 
-✅ CORRECT (all lines = 67 chars):
+### 重要: 文字幅ルール
+
+**箱の各行は（空白を含め）文字数が完全に同じでなければならない**
+
+✅ 正しい例（全行 = 67 文字）:
+
 ```
 +---------------------------------------------------------------+
 |                      Component Name                           |
@@ -23,7 +26,8 @@
 +---------------------------------------------------------------+
 ```
 
-❌ WRONG (inconsistent widths):
+❌ 間違い（幅が不一致）:
+
 ```
 +---------------------------------------------------------------+
 |                      Component Name                           |
@@ -31,7 +35,8 @@
 +---------------------------------------------------------------+
 ```
 
-### Box Pattern
+### 箱のパターン
+
 ```
 +-----------------------------------------------------+
 |                                                     |
@@ -43,7 +48,8 @@
 +-----------------------------------------------------+
 ```
 
-### Nested Boxes
+### 入れ子の箱
+
 ```
 +-------------------------------------------------------+
 |              Web Server (PHP Runtime)                 |
@@ -58,7 +64,8 @@
 +-------------------------------------------------------+
 ```
 
-### Arrows and Connections
+### 矢印と接続
+
 ```
 +----------+
 |  Source  |
@@ -71,14 +78,16 @@
 +----------+
 ```
 
-### Horizontal Flow
+### 横方向フロー
+
 ```
 +-------+     +-------+     +-------+
 | Step1 | --> | Step2 | --> | Step3 |
 +-------+     +-------+     +-------+
 ```
 
-### Vertical Flow with Labels
+### ラベル付き縦方向フロー
+
 ```
 User Action Flow:
     |
@@ -100,17 +109,17 @@ User Action Flow:
 +----------+
 ```
 
-## Validation
+## 検証
 
-Before creating diagrams:
-- [ ] Basic ASCII only: `+` `-` `|` `^` `v` `<` `>`
-- [ ] No Unicode box-drawing
-- [ ] Spaces (not tabs) for alignment
-- [ ] Corners use `+`
-- [ ] **ALL box lines same character width** (count characters including spaces)
-- [ ] Test: Verify corners align vertically in monospace font
+図を作成する前に:
 
-## Alternative
+- [ ] 基本 ASCII のみ: `+` `-` `|` `^` `v` `<` `>`
+- [ ] Unicode 罫線なし
+- [ ] 位置合わせはスペース（タブ不可）
+- [ ] 角は `+` を使用
+- [ ] **箱の全行が同一文字幅**（空白を含めて数える）
+- [ ] テスト: 等幅フォントで角が縦に揃っていることを確認
 
-For complex diagrams, use Mermaid (see `content-validation.md`)
+## 代替
 
+複雑な図は Mermaid を使用（`content-validation.md` 参照）

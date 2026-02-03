@@ -1,29 +1,29 @@
 # Build and Test
 
-**Purpose**: Build all units and execute comprehensive testing strategy
+**目的**: すべてのユニットをビルドし、包括的なテスト戦略を実行する
 
-## Prerequisites
-- Code Generation must be complete for all units
-- All code artifacts must be generated
-- Project is ready for build and testing
-
----
-
-## Step 1: Analyze Testing Requirements
-
-Analyze the project to determine appropriate testing strategy:
-- **Unit tests**: Already generated per unit during code generation
-- **Integration tests**: Test interactions between units/services
-- **Performance tests**: Load, stress, and scalability testing
-- **End-to-end tests**: Complete user workflows
-- **Contract tests**: API contract validation between services
-- **Security tests**: Vulnerability scanning, penetration testing
+## 前提条件
+- すべてのユニットで Code Generation が完了していること
+- すべてのコード成果物が生成済みであること
+- プロジェクトがビルドとテストの準備完了
 
 ---
 
-## Step 2: Generate Build Instructions
+## ステップ 1: テスト要件の分析
 
-Create `aidlc-docs/construction/build-and-test/build-instructions.md`:
+プロジェクトを分析して適切なテスト戦略を決定:
+- **ユニットテスト**: Code Generation でユニットごとに生成済み
+- **統合テスト**: ユニット/サービス間の相互作用を検証
+- **性能テスト**: 負荷・ストレス・スケーラビリティ
+- **E2E テスト**: 完全なユーザーワークフロー
+- **契約テスト**: サービス間の API 契約検証
+- **セキュリティテスト**: 脆弱性スキャン、ペネトレーション
+
+---
+
+## ステップ 2: ビルド手順の生成
+
+`aidlc-docs/construction/build-and-test/build-instructions.md` を作成:
 
 ```markdown
 # Build Instructions
@@ -37,22 +37,22 @@ Create `aidlc-docs/construction/build-and-test/build-instructions.md`:
 ## Build Steps
 
 ### 1. Install Dependencies
-\`\`\`bash
+```bash
 [Command to install dependencies]
 # Example: npm install, mvn dependency:resolve, pip install -r requirements.txt
-\`\`\`
+```
 
 ### 2. Configure Environment
-\`\`\`bash
+```bash
 [Commands to set up environment]
 # Example: export variables, configure credentials
-\`\`\`
+```
 
 ### 3. Build All Units
-\`\`\`bash
+```bash
 [Command to build all units]
 # Example: mvn clean install, npm run build, brazil-build
-\`\`\`
+```
 
 ### 4. Verify Build Success
 - **Expected Output**: [Describe successful build output]
@@ -72,9 +72,9 @@ Create `aidlc-docs/construction/build-and-test/build-instructions.md`:
 
 ---
 
-## Step 3: Generate Unit Test Execution Instructions
+## ステップ 3: ユニットテスト実行手順の生成
 
-Create `aidlc-docs/construction/build-and-test/unit-test-instructions.md`:
+`aidlc-docs/construction/build-and-test/unit-test-instructions.md` を作成:
 
 ```markdown
 # Unit Test Execution
@@ -82,10 +82,10 @@ Create `aidlc-docs/construction/build-and-test/unit-test-instructions.md`:
 ## Run Unit Tests
 
 ### 1. Execute All Unit Tests
-\`\`\`bash
+```bash
 [Command to run all unit tests]
 # Example: mvn test, npm test, pytest tests/unit
-\`\`\`
+```
 
 ### 2. Review Test Results
 - **Expected**: [X] tests pass, 0 failures
@@ -102,9 +102,9 @@ If tests fail:
 
 ---
 
-## Step 4: Generate Integration Test Instructions
+## ステップ 4: 統合テスト手順の生成
 
-Create `aidlc-docs/construction/build-and-test/integration-test-instructions.md`:
+`aidlc-docs/construction/build-and-test/integration-test-instructions.md` を作成:
 
 ```markdown
 # Integration Test Instructions
@@ -127,24 +127,24 @@ Test interactions between units/services to ensure they work together correctly.
 ## Setup Integration Test Environment
 
 ### 1. Start Required Services
-\`\`\`bash
+```bash
 [Commands to start services]
 # Example: docker-compose up, start test database
-\`\`\`
+```
 
 ### 2. Configure Service Endpoints
-\`\`\`bash
+```bash
 [Commands to configure endpoints]
 # Example: export API_URL=http://localhost:8080
-\`\`\`
+```
 
 ## Run Integration Tests
 
 ### 1. Execute Integration Test Suite
-\`\`\`bash
+```bash
 [Command to run integration tests]
 # Example: mvn integration-test, npm run test:integration
-\`\`\`
+```
 
 ### 2. Verify Service Interactions
 - **Test Scenarios**: [List key integration test scenarios]
@@ -152,17 +152,17 @@ Test interactions between units/services to ensure they work together correctly.
 - **Logs Location**: [Where to check logs]
 
 ### 3. Cleanup
-\`\`\`bash
+```bash
 [Commands to clean up test environment]
 # Example: docker-compose down, stop test services
-\`\`\`
+```
 ```
 
 ---
 
-## Step 5: Generate Performance Test Instructions (If Applicable)
+## ステップ 5: 性能テスト手順の生成（該当する場合）
 
-Create `aidlc-docs/construction/build-and-test/performance-test-instructions.md`:
+`aidlc-docs/construction/build-and-test/performance-test-instructions.md` を作成:
 
 ```markdown
 # Performance Test Instructions
@@ -179,10 +179,10 @@ Validate system performance under load to ensure it meets requirements.
 ## Setup Performance Test Environment
 
 ### 1. Prepare Test Environment
-\`\`\`bash
+```bash
 [Commands to set up performance testing]
 # Example: scale services, configure load balancers
-\`\`\`
+```
 
 ### 2. Configure Test Parameters
 - **Test Duration**: [X] minutes
@@ -192,16 +192,16 @@ Validate system performance under load to ensure it meets requirements.
 ## Run Performance Tests
 
 ### 1. Execute Load Tests
-\`\`\`bash
+```bash
 [Command to run load tests]
 # Example: jmeter -n -t test.jmx, k6 run script.js
-\`\`\`
+```
 
 ### 2. Execute Stress Tests
-\`\`\`bash
+```bash
 [Command to run stress tests]
 # Example: gradually increase load until failure
-\`\`\`
+```
 
 ### 3. Analyze Performance Results
 - **Response Time**: [Actual vs Expected]
@@ -220,34 +220,34 @@ If performance doesn't meet requirements:
 
 ---
 
-## Step 6: Generate Additional Test Instructions (As Needed)
+## ステップ 6: 追加テスト手順の生成（必要に応じて）
 
-Based on project requirements, generate additional test instruction files:
+プロジェクト要件に基づいて追加の手順ファイルを作成:
 
-### Contract Tests (For Microservices)
-Create `aidlc-docs/construction/build-and-test/contract-test-instructions.md`:
-- API contract validation between services
-- Consumer-driven contract testing
-- Schema validation
+### 契約テスト（マイクロサービス向け）
+`aidlc-docs/construction/build-and-test/contract-test-instructions.md` を作成:
+- サービス間の API 契約検証
+- コンシューマ駆動契約テスト
+- スキーマ検証
 
-### Security Tests
-Create `aidlc-docs/construction/build-and-test/security-test-instructions.md`:
-- Vulnerability scanning
-- Dependency security checks
-- Authentication/authorization testing
-- Input validation testing
+### セキュリティテスト
+`aidlc-docs/construction/build-and-test/security-test-instructions.md` を作成:
+- 脆弱性スキャン
+- 依存関係セキュリティチェック
+- 認証/認可テスト
+- 入力検証テスト
 
-### End-to-End Tests
-Create `aidlc-docs/construction/build-and-test/e2e-test-instructions.md`:
-- Complete user workflow testing
-- Cross-service scenarios
-- UI testing (if applicable)
+### E2E テスト
+`aidlc-docs/construction/build-and-test/e2e-test-instructions.md` を作成:
+- 完全なユーザーワークフローテスト
+- クロスサービスシナリオ
+- UI テスト（該当する場合）
 
 ---
 
-## Step 7: Generate Test Summary
+## ステップ 7: テストサマリーの生成
 
-Create `aidlc-docs/construction/build-and-test/build-and-test-summary.md`:
+`aidlc-docs/construction/build-and-test/build-and-test-summary.md` を作成:
 
 ```markdown
 # Build and Test Summary
@@ -296,17 +296,17 @@ Create `aidlc-docs/construction/build-and-test/build-and-test-summary.md`:
 
 ---
 
-## Step 8: Update State Tracking
+## ステップ 8: 状態追跡の更新
 
-Update `aidlc-docs/aidlc-state.md`:
-- Mark Build and Test stage as complete
-- Update current status
+`aidlc-docs/aidlc-state.md` を更新:
+- Build and Test ステージを完了にする
+- 現在状況を更新
 
 ---
 
-## Step 9: Present Results to User
+## ステップ 9: 結果の提示
 
-Present comprehensive message:
+包括的メッセージを提示:
 
 ```
 "🔨 Build and Test Complete!
@@ -334,9 +334,9 @@ Review the summary in aidlc-docs/construction/build-and-test/build-and-test-summ
 
 ---
 
-## Step 10: Log Interaction
+## ステップ 10: 取り扱いの記録
 
-**MANDATORY**: Log the phase completion in `aidlc-docs/audit.md`:
+**必須**: `aidlc-docs/audit.md` にフェーズ完了を記録:
 
 ```markdown
 ## Build and Test Stage

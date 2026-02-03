@@ -1,134 +1,112 @@
-# AI-DLC (AI-Driven Development Life Cycle)
+# AI-DLC（AI-Driven Development Life Cycle）
 
-AI-DLC is an intelligent software development workflow that adapts to your needs, maintains quality standards, and keeps you in control of the process. For learning more about AI-DLC Methodology, read this [blog](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) and the [Method Definition Paper](https://prod.d13rzhkk8cj2z0.amplifyapp.com/) referred in it.
+AI-DLC は、ニーズに合わせて適応し、品質基準を維持し、プロセスの主導権をあなたに保つインテリジェントなソフトウェア開発ワークフローです。AI-DLC の方法論について詳しくは、こちらの[ブログ](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/)と、そこで参照されている[Method Definition Paper](https://prod.d13rzhkk8cj2z0.amplifyapp.com/)を参照してください。
 
-## Quick Start
+## クイックスタート
 
-Set up the AI-DLC rules/steering files as part of your [supported platform](#prerequisites).
+AI-DLC のルール/ステアリングファイルを、[対応プラットフォーム](#前提条件)の一部としてセットアップします。
 
-Clone this repo:
+このリポジトリをクローンします:
+
 ```bash
 git clone <this-repo>
 ```
 
-Create a new project folder with a name of your choosing if you're working on a greenfield application:
+新規アプリケーションを開始する場合は、任意の名前で新しいプロジェクトフォルダを作成します:
+
 ```
 mkdir <my-project>
 ```
 
-Assuming your project is located under the same parent folder as the cloned `aidlc-workflows`
-repo, change directory to your project folder:
+プロジェクトがクローンした `aidlc-workflows` と同じ親フォルダ配下にある前提で、プロジェクトフォルダに移動します:
+
 ```bash
 cd <my-project>
 ```
 
-### Amazon Q Developer IDE Plugin/Extension
+### VSCode + Codex
 
-AI-DLC uses [Amazon Q Rules](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/context-project-rules.html) to implement its intelligent workflow. To activate AI-DLC in your project, copy the rules to your project's workspace under the `<project-root>/.amazonq` folder.
+AI-DLC は VSCode + Codex のワークスペースルールとして読み込むことを前提にしています。プロジェクトで AI-DLC を有効化するには、ルールを `<project-root>/.codex` 配下にコピーします。
 
-Copy the AI-DLC workflow to your project's workspace under the `<project-root>/.amazonq` folder:
+AI-DLC ワークフローを `<project-root>/.codex` 配下にコピーします:
+
 ```
-mkdir -p .amazonq/rules 
-cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rules .amazonq/rules/ 
-cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rule-details .amazonq/
-```
-
-To confirm that the Amazon Q Rules are correctly loaded in your IDE, follow these steps:
-
-1. In the Amazon Q Chat window, locate the `Rules` button in the lower right corner and click on it.
-2. Verify that you see entries for `.amazonq/rules/aws-aidlc-rules` in the displayed list of rules.
-
-If you do not see the `aws-aidlc-rules` rules loaded, please check the directory where you previously issued the `mkdir` and `cp` commands.  
-
-![AI-DLC Rules in Q Developer IDE](./assets/images/q-ide-aidlc-rules-loaded.png?raw=true "AI-DLC Rules in Q Developer")
-
-### Kiro CLI
-
-AI-DLC uses [Kiro Steering Files](https://kiro.dev/docs/cli/steering/) within your project workspace to implement its intelligent workflow. To activate AI-DLC in your project, copy the rules to your project's workspace under the `<your-project-root>/.kiro/steering` folder.
-
-Copy the AI-DLC workflow to your project's workspace under the `<project-root>/.kiro` folder:
-
-```bash
-mkdir -p .kiro/steering
-cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rules .kiro/steering/
-cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rule-details .kiro/
+mkdir -p .codex/rules
+cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rules .codex/rules/
+cp -R ../aidlc-workflows/aidlc-rules/aws-aidlc-rule-details .codex/
 ```
 
-To confirm that the AI-DLC rules are correctly loaded in your Kiro CLI, follow these steps:
+Codex がルールを正しく読み込んでいることを確認するには、次の手順に従ってください:
 
-1. Start Kiro CLI: `kiro-cli`
-2. Check your context contents: `/context show`
-3. Verify that you see all entries for `.kiro/steering/aws-aidlc-rules` in the displayed list of rules.
+1. VSCode で Codex のチャット/パネルを開きます。
+2. ワークスペースルールの一覧に `.codex/rules/aws-aidlc-rules` が表示されていることを確認します。
 
-If you do not see the `aws-aidlc-rules` rules loaded, please check the directory where you previously issued the `mkdir` and `cp` commands.  
+表示されない場合は、`mkdir` と `cp` を実行したディレクトリが正しいか確認してください。
 
-![AI-DLC Rules in Kiro CLI](./assets/images/kiro-cli-aidlc-rules-loaded.png?raw=true "AI-DLC Rules in Kiro CLI")
+### 使い方
 
-### Usage
+1. チャットで「Using AI-DLC, ...」というフレーズで意図を述べて、任意のソフトウェア開発プロジェクトを開始します。
+2. AI-DLC ワークフローが自動的に有効化され、以降の手順をガイドします。
+3. AI-DLC が提示する構造化された質問に回答します。
+4. AI が生成する計画は必ず確認し、監督と検証を行ってください。
+5. 実行計画を確認し、どのステージが実行されるかを把握します。
+6. 成果物を慎重にレビューし、各ステージを承認して主導権を維持します。
+7. すべての成果物は `aidlc-docs/` ディレクトリに生成されます。
 
-1. Start any software development project by stating your intent starting with the phrase "Using AI-DLC, ..." in the chat. 
-2. AI-DLC workflow automatically activates and guides you from there.
-3. Answer structured questions that AI-DLC asks you
-4. Carefully review every plan that AI generates. Provide your oversight and validation.
-5. Review the execution plan to see which stages will run
-6. Carefully review the artifacts and approve each stage to maintain control
-7. All the artifacts will be generated in the `aidlc-docs/` directory
+## 3 フェーズの適応型ワークフロー
 
-## Three-Phase Adaptive Workflow
+AI-DLC はプロジェクトの複雑さに応じて適応する、構造化された 3 フェーズのアプローチに従います:
 
-AI-DLC follows a structured three-phase approach that adapts to your project's complexity:
+- **🔵 INCEPTION フェーズ**: **何を**、そして **なぜ** 作るかを決定
+  - 要件分析と検証
+  - ユーザーストーリー作成（該当する場合）
+  - アプリケーション設計と並列開発のための作業単位作成
+  - リスク評価と複雑性評価
 
-- **🔵 INCEPTION PHASE**: Determines **WHAT** to build and **WHY**
-  - Requirements analysis and validation
-  - User story creation (when applicable)
-  - Application Design and creating units of work for parallel development
-  - Risk assessment and complexity evaluation
+- **🟢 CONSTRUCTION フェーズ**: **どのように** 作るかを決定
+  - 詳細なコンポーネント設計
+  - コード生成と実装
+  - ビルド設定とテスト戦略
+  - 品質保証と検証
 
-- **🟢 CONSTRUCTION PHASE**: Determines **HOW** to build it
-  - Detailed component design
-  - Code generation and implementation
-  - Build configuration and testing strategies
-  - Quality assurance and validation
+- **🟡 OPERATIONS フェーズ**: デプロイと監視（将来予定）
+  - デプロイ自動化とインフラ
+  - 監視と可観測性のセットアップ
+  - 本番準備の検証
 
-- **🟡 OPERATIONS PHASE**: Deployment and monitoring (future)
-  - Deployment automation and infrastructure
-  - Monitoring and observability setup
-  - Production readiness validation
+## 主な特徴
 
-## Key Features
+- **適応型インテリジェンス**: 特定の要求に価値を与えるステージのみを実行
+- **コンテキスト認識**: 既存コードベースと複雑性要件を分析
+- **リスクベース**: 複雑な変更は包括的に扱い、単純な変更は効率的に
+- **質問駆動**: チャットではなくファイル内の構造化された選択式質問
+- **常に主導権は人に**: 実行計画をレビューし、各フェーズを承認
 
-- **Adaptive Intelligence**: Only executes stages that add value to your specific request
-- **Context-Aware**: Analyzes existing codebase and complexity requirements
-- **Risk-Based**: Complex changes get comprehensive treatment, simple changes stay efficient
-- **Question-Driven**: Structured multiple-choice questions in files, not chat
-- **Always in Control**: Review execution plans and approve each phase
+## 前提条件
 
-## Prerequisites
+支援型 AI コーディングのために以下を準備してください:
 
-Have one of our supported platforms/tools for Assisted AI Coding installed:
+- VSCode
+- Codex
 
-- [Kiro CLI](https://kiro.dev/cli/)
-- [Amazon Q Developer IDE plugin](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-in-IDE.html)
-- [Kiro IDE](https://kiro.dev/) (coming soon)
+## 基本理念
 
-## Tenets
+意思決定を導く中核原則です。
 
-These are our core principles to guide our decision making.
+- **重複なし**。真のソースは一箇所に置く。新しいツールや形式に対応するために特定ファイルが必要になった場合でも、ソースから生成し、別コピーを維持しない。
 
-- **No duplication**. The source of truth lives in one place. If we add support for new tools or formats that require specific files, we generate them from the source rather than maintaining separate copies.
+- **方法論優先**。AI-DLC は本質的に方法論であり、ツールではない。ユーザーは開始にインストールを必要としないべき。ただし、採用や拡張に役立つなら、利便性のためのツール（スクリプト、CLI）を将来的に検討する。
 
-- **Methodology first**. AI-DLC is fundamentally a methodology, not a tool. Users shouldn't need to install anything to get started. That said, we're open to convenience tooling (scripts, CLIs) down the road if it helps users adopt or extend the methodology.
+- **再現可能**。異なるモデルでも類似の成果が出るように、ルールは十分に明確であるべき。モデルの差異は認識した上で、明示的なガイダンスによりばらつきを最小化する。
 
-- **Reproducible**. Rules should be clear enough that different models produce similar outcomes. We know models behave differently, but the methodology should minimize variance through explicit guidance.
+- **中立性**。方法論はどの IDE、エージェント、モデルでも機能する。特定ツールやベンダーに依存しない。
 
-- **Agnostic**. The methodology works with any IDE, agent, or model. We don't tie ourselves to specific tools or vendors.
+- **人間が最終判断**。重要な意思決定は明示的なユーザー承認を要する。エージェントが提案し、人間が承認する。
 
-- **Human in the loop**. Critical decisions require explicit user confirmation. The agent proposes, the human approves.
+## セキュリティ
 
-## Security
+詳細は [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) を参照してください。
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+## ライセンス
 
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+本ライブラリは MIT-0 License の下で提供されています。詳細は LICENSE を参照してください。

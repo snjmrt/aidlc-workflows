@@ -1,122 +1,122 @@
-# Requirements Analysis (Adaptive)
+# Requirements Analysis（適応）
 
-**Assume the role** of a product owner
+**プロダクトオーナーの役割を担う**
 
-**Adaptive Phase**: Always executes. Detail level adapts to problem complexity.
+**適応フェーズ**: 常に実行。詳細度は問題の複雑さに応じて適応。
 
-**See [depth-levels.md](../common/depth-levels.md) for adaptive depth explanation**
+**適応的詳細度の説明は [depth-levels.md](../common/depth-levels.md) を参照**
 
-## Prerequisites
-- Workspace Detection must be complete
-- Reverse Engineering must be complete (if brownfield)
+## 前提条件
+- Workspace Detection が完了していること
+- Reverse Engineering が完了していること（ブラウンフィールドの場合）
 
-## Execution Steps
+## 実行手順
 
-### Step 1: Load Reverse Engineering Context (if available)
+### ステップ 1: リバースエンジニアリングのコンテキスト読み込み（可能な場合）
 
-**IF brownfield project**:
-- Load `aidlc-docs/inception/reverse-engineering/architecture.md`
-- Load `aidlc-docs/inception/reverse-engineering/component-inventory.md`
-- Load `aidlc-docs/inception/reverse-engineering/technology-stack.md`
-- Use these to understand existing system when analyzing request
+**ブラウンフィールドの場合**:
+- `aidlc-docs/inception/reverse-engineering/architecture.md` を読み込む
+- `aidlc-docs/inception/reverse-engineering/component-inventory.md` を読み込む
+- `aidlc-docs/inception/reverse-engineering/technology-stack.md` を読み込む
+- これらを使って、要求分析時に既存システムを理解する
 
-### Step 2: Analyze User Request (Intent Analysis)
+### ステップ 2: ユーザー要求の分析（意図分析）
 
-#### 2.1 Request Clarity
-- **Clear**: Specific, well-defined, actionable
-- **Vague**: General, ambiguous, needs clarification
-- **Incomplete**: Missing key information
+#### 2.1 要求の明確さ
+- **明確**: 具体的で定義済み、実行可能
+- **曖昧**: 一般的で不明確、明確化が必要
+- **不完全**: 重要情報が欠落
 
-#### 2.2 Request Type
-- **New Feature**: Adding new functionality
-- **Bug Fix**: Fixing existing issue
-- **Refactoring**: Improving code structure
-- **Upgrade**: Updating dependencies or frameworks
-- **Migration**: Moving to different technology
-- **Enhancement**: Improving existing feature
-- **New Project**: Starting from scratch
+#### 2.2 要求タイプ
+- **新機能**: 新しい機能の追加
+- **バグ修正**: 既存の不具合修正
+- **リファクタリング**: コード構造の改善
+- **アップグレード**: 依存関係やフレームワークの更新
+- **マイグレーション**: 別の技術への移行
+- **改善**: 既存機能の改善
+- **新規プロジェクト**: ゼロから開始
 
-#### 2.3 Initial Scope Estimate
-- **Single File**: Changes to one file
-- **Single Component**: Changes to one component/package
-- **Multiple Components**: Changes across multiple components
-- **System-wide**: Changes affecting entire system
-- **Cross-system**: Changes affecting multiple systems
+#### 2.3 初期スコープ見積もり
+- **単一ファイル**: 1 ファイルの変更
+- **単一コンポーネント**: 1 コンポーネント/パッケージの変更
+- **複数コンポーネント**: 複数コンポーネントにまたがる変更
+- **システム全体**: システム全体に影響する変更
+- **クロスシステム**: 複数システムに影響する変更
 
-#### 2.4 Initial Complexity Estimate
-- **Trivial**: Simple, straightforward change
-- **Simple**: Clear implementation path
-- **Moderate**: Some complexity, multiple considerations
-- **Complex**: Significant complexity, many considerations
+#### 2.4 初期複雑度見積もり
+- **些細**: 単純で明快な変更
+- **シンプル**: 実装の道筋が明確
+- **中程度**: いくつかの複雑性と考慮点
+- **複雑**: 大きな複雑性と多数の考慮点
 
-### Step 3: Determine Requirements Depth
+### ステップ 3: 要件深度の決定
 
-**Based on request analysis, determine depth:**
+**要求分析に基づいて深度を決定:**
 
-**Minimal Depth** - Use when:
-- Request is clear and simple
-- No detailed requirements needed
-- Just document the basic understanding
+**最小深度** - 次の場合に使用:
+- 要求が明確で単純
+- 詳細な要件が不要
+- 基本的な理解を文書化するだけでよい
 
-**Standard Depth** - Use when:
-- Request needs clarification
-- Functional and non-functional requirements needed
-- Normal complexity
+**標準深度** - 次の場合に使用:
+- 明確化が必要
+- 機能/非機能要件が必要
+- 通常の複雑度
 
-**Comprehensive Depth** - Use when:
-- Complex project with multiple stakeholders
-- High risk or critical system
-- Detailed requirements with traceability needed
+**包括的深度** - 次の場合に使用:
+- 複数ステークホルダーが関わる複雑プロジェクト
+- 高リスクまたは重要システム
+- トレーサビリティ付きの詳細要件が必要
 
-### Step 4: Assess Current Requirements
+### ステップ 4: 現在の要件の評価
 
-Analyze whatever the user has provided:
-   - Intent statements or descriptions (already logged in audit.md)
-   - Existing requirements documents (search workspace if mentioned)
-   - Pasted content or file references
-   - Convert any non-markdown documents to markdown format 
+ユーザーが提供した内容を分析:
+   - 意図の記述（audit.md に記録済み）
+   - 既存の要件ドキュメント（言及があればワークスペースを検索）
+   - 貼り付けた内容やファイル参照
+   - Markdown 以外の文書は Markdown に変換
 
-### Step 5: Thorough Completeness Analysis
+### ステップ 5: 徹底した網羅性分析
 
-**CRITICAL**: Use comprehensive analysis to evaluate requirements completeness. Default to asking questions when there is ANY ambiguity or missing detail.
+**重要**: 包括的分析で要件の網羅性を評価する。あいまいさや欠落が少しでもあれば、質問することをデフォルトにする。
 
-**MANDATORY**: Evaluate ALL of these areas and ask questions for ANY that are unclear:
-- **Functional Requirements**: Core features, user interactions, system behaviors
-- **Non-Functional Requirements**: Performance, security, scalability, usability
-- **User Scenarios**: Use cases, user journeys, edge cases, error scenarios
-- **Business Context**: Goals, constraints, success criteria, stakeholder needs
-- **Technical Context**: Integration points, data requirements, system boundaries
-- **Quality Attributes**: Reliability, maintainability, testability, accessibility
+**必須**: 以下の領域をすべて評価し、不明確なものは必ず質問する:
+- **機能要件**: コア機能、ユーザー操作、システム挙動
+- **非機能要件**: パフォーマンス、セキュリティ、スケーラビリティ、ユーザビリティ
+- **ユーザーシナリオ**: ユースケース、ユーザージャーニー、エッジケース、エラーシナリオ
+- **ビジネス文脈**: 目標、制約、成功基準、ステークホルダー要件
+- **技術文脈**: 統合ポイント、データ要件、システム境界
+- **品質属性**: 信頼性、保守性、テスト容易性、アクセシビリティ
 
-**When in doubt, ask questions** - incomplete requirements lead to poor implementations.
+**迷ったら質問する** - 不完全な要件は不適切な実装につながる。
 
-### Step 6: Generate Clarifying Questions (PROACTIVE APPROACH)
-   - **ALWAYS** create `aidlc-docs/inception/requirements/requirement-verification-questions.md` unless requirements are exceptionally clear and complete
-   - Ask questions about ANY missing, unclear, or ambiguous areas
-   - Focus on functional requirements, non-functional requirements, user scenarios, and business context
-   - Request user to fill in all [Answer]: tags directly in the questions document
-   - If presenting multiple-choice options for answers:
-     - Label the options as A, B, C, D etc.
-     - Ensure options are mutually exclusive and don't overlap
-     - ALWAYS include option for custom response: "X) Other (please describe after [Answer]: tag below)"
-   - Wait for user answers in the document
-   - **MANDATORY**: Analyze ALL answers for ambiguities and create follow-up questions if needed
-   - **MANDATORY**: Keep asking questions until ALL ambiguities are resolved OR user explicitly asks to proceed
+### ステップ 6: 確認質問の生成（プロアクティブ）
+   - **常に** `aidlc-docs/inception/requirements/requirement-verification-questions.md` を作成（例外的に要件が極めて明確かつ完全な場合を除く）
+   - 欠落/不明/あいまいな領域はすべて質問する
+   - 機能要件、非機能要件、ユーザーシナリオ、ビジネス文脈に焦点を当てる
+   - 質問文書内の [Answer]: タグをユーザーに直接記入してもらう
+   - 複数選択形式を提示する場合:
+     - 選択肢を A, B, C, D などで表記
+     - 選択肢は相互排他的かつ重複しない
+     - 必ずカスタム回答の選択肢を含める: "X) Other (please describe after [Answer]: tag below)"
+   - ユーザー回答を待つ
+   - **必須**: すべての回答のあいまいさを分析し、必要ならフォロー質問を作成
+   - **必須**: あいまいさが解消されるまで、またはユーザーが明示的に進行を望むまで質問を続ける
 
-### Step 7: Generate Requirements Document
-   - Create `aidlc-docs/inception/requirements/requirements.md`
-   - Include intent analysis summary at the top:
-     - User request
-     - Request type
-     - Scope estimate
-     - Complexity estimate
-   - Include both functional and non-functional requirements
-   - Incorporate user's answers to clarifying questions
-   - Provide brief summary of key requirements
+### ステップ 7: 要件ドキュメントの生成
+   - `aidlc-docs/inception/requirements/requirements.md` を作成
+   - 先頭に意図分析の要約を含める:
+     - ユーザー要求
+     - 要求タイプ
+     - スコープ見積もり
+     - 複雑度見積もり
+   - 機能要件と非機能要件を含める
+   - 確認質問への回答を取り込む
+   - 主要要件の簡潔な要約を提供
 
-### Step 8: Update State Tracking
+### ステップ 8: 状態追跡の更新
 
-Update `aidlc-docs/aidlc-state.md`:
+`aidlc-docs/aidlc-state.md` を更新:
 
 ```markdown
 ## Stage Progress
@@ -126,23 +126,23 @@ Update `aidlc-docs/aidlc-state.md`:
 - [x] Requirements Analysis
 ```
 
-### Step 9: Log and Proceed
-   - Log approval prompt with timestamp in `aidlc-docs/audit.md`
-   - Present completion message in this structure:
-     1. **Completion Announcement** (mandatory): Always start with this:
+### ステップ 9: ログと次の進行
+   - 承認プロンプトをタイムスタンプ付きで `aidlc-docs/audit.md` に記録
+   - 次の構造で完了メッセージを提示:
+     1. **完了告知**（必須）: 必ずこれで開始
 
 ```markdown
 # 🔍 Requirements Analysis Complete
 ```
 
-     2. **AI Summary** (optional): Provide structured bullet-point summary of requirements
-        - Format: "Requirements analysis has identified [project type/complexity]:"
-        - List key functional requirements (bullet points)
-        - List key non-functional requirements (bullet points)
-        - Mention architectural considerations or technical decisions if relevant
-        - DO NOT include workflow instructions ("please review", "let me know", "proceed to next phase", "before we proceed")
-        - Keep factual and content-focused
-     3. **Formatted Workflow Message** (mandatory): Always end with this exact format:
+     2. **AI 要約**（任意）: 構造化された箇条書きで要件を要約
+        - 形式: "Requirements analysis has identified [project type/complexity]:"
+        - 主要な機能要件を列挙
+        - 主要な非機能要件を列挙
+        - 該当する場合はアーキテクチャ上の考慮や技術判断に触れる
+        - ワークフロー指示は含めない（"please review"、"let me know"、"proceed to next phase"、"before we proceed" など）
+        - 事実ベースかつ内容中心にする
+     3. **フォーマット済みワークフローメッセージ**（必須）: 必ず以下の形式で終了
 
 ```markdown
 > **📋 <u>**REVIEW REQUIRED:**</u>**  
@@ -162,8 +162,8 @@ Update `aidlc-docs/aidlc-state.md`:
 ---
 ```
 
-**Note**: Include the "Add User Stories" option only when User Stories stage will be skipped. Replace [User Stories/Workflow Planning] with the actual next stage name.
+**注記**: User Stories をスキップする場合のみ "Add User Stories" を含める。[User Stories/Workflow Planning] は実際の次ステージ名に置き換える。
 
-   - Wait for explicit user approval before proceeding
-   - Record approval response with timestamp
-   - Update Requirements Analysis stage complete in aidlc-state.md
+   - 明示的なユーザー承認を待つ
+   - 承認回答をタイムスタンプ付きで記録
+   - aidlc-state.md の Requirements Analysis を完了に更新
